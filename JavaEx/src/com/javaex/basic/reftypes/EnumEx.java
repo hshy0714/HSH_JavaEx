@@ -23,6 +23,7 @@ public class EnumEx {
 			break;
 		case FRIDAY:
 			message = "불금";
+			break;
 		case SATURDAY:
 			message = "주말";
 			break;

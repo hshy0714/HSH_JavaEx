@@ -10,7 +10,7 @@ public class ArrayEx {
 	}
 	
 	//	배열 복사 (System 객체 이용)
-	private static void arraycopySystem() {
+	private static void arrayCopySystem() {
 		int source[] = { 1, 2, 3 };
 		int target[] = new int[10];
 		
@@ -130,4 +130,4 @@ public class ArrayEx {
 		
 	}
 	
-}
+}	
