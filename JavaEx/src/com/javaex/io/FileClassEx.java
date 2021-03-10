@@ -9,7 +9,7 @@ import java.io.IOException;
 //		파일 내용을 기록하는 것은 Stream 에서 담당
 public class FileClassEx {
 	//	현재 프로젝트 내의 루트 디렉터리 위치
-	private static String rootpath = System.getProperty("=user.dir") + "\\files\\";
+	private static String rootpath = System.getProperty("user.dir") + "\\files\\";
 	
 	public static void main(String[] args) {
 		//	File 객체 생성
