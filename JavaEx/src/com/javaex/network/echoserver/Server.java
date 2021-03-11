@@ -25,9 +25,8 @@ public class Server {
 			//	시작 메시지
 			System.out.println("<서버 시작>");
 			System.out.println("SERVER: [연결을 기다립니다.]");
-
+			
 			//	연결 대기
-			Socket socket = serverSocket.accept();
 			while(true) {
 				Socket socket = serverSocket.accept();
 				Thread thread = new ServerThread(socket);
@@ -78,12 +77,10 @@ public class Server {
 			
 			bw.close();
 			br.close();
-
 			//-------- Working Thread Logic End
 			*/
 
 			//	후처리
-			System.out.println("SERVER: [서버를 종료합니다]");
 //			System.out.println("SERVER: [서버를 종료합니다]");
 		} catch (Exception e) {
 			e.printStackTrace();
