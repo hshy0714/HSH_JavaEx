@@ -1,5 +1,4 @@
 package com.javaex.network.echoserver;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 public class Server {
-	
 	public static void main(String[] args) {
 		//	서버 소켓
 		ServerSocket serverSocket = null;
@@ -27,9 +25,17 @@ public class Server {
 			//	시작 메시지
 			System.out.println("<서버 시작>");
 			System.out.println("SERVER: [연결을 기다립니다.]");
-			
+
 			//	연결 대기
 			Socket socket = serverSocket.accept();
+			while(true) {
+				Socket socket = serverSocket.accept();
+				Thread thread = new ServerThread(socket);
+				thread.start();
+			}
+
+			//---- Working Thread Logic
+			/*
 			//	클라이언트 정보 확인
 			InetSocketAddress socketAddress =
 					(InetSocketAddress)socket.getRemoteSocketAddress();	//	원격지 소켓의 주소 확인
@@ -43,15 +49,15 @@ public class Server {
 			InputStream is = socket.getInputStream();
 			Reader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
-
+			
 			//	Echo Back을 위한 OutputStream
 			OutputStream os = socket.getOutputStream();
 			Writer osw = new OutputStreamWriter(os, "UTF-8");
 			BufferedWriter bw = new BufferedWriter(osw);
-
+			
 			//	메시지 읽어오기
 			String message;
-
+			
 			while(true) {
 				message = br.readLine();
 				
@@ -59,9 +65,9 @@ public class Server {
 					System.out.println("SERVER: 접속을 종료합니다.");
 					break;
 				}
-
+				
 				System.out.println("SERVER: [수신 메시지]" + message);
-
+				
 				//	Echo Back 메시지 전송
 				message = "Echo back - " + message;
 				System.out.println("SERVER: [Echo back] :" + message);
@@ -69,15 +75,16 @@ public class Server {
 				bw.newLine();
 				bw.flush();
 			}
-
-
-
 			
 			bw.close();
 			br.close();
 
+			//-------- Working Thread Logic End
+			*/
+
 			//	후처리
 			System.out.println("SERVER: [서버를 종료합니다]");
+//			System.out.println("SERVER: [서버를 종료합니다]");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
