@@ -36,7 +36,6 @@ public class PhoneBook {
 	public String toString() {
 		return name+","+hp+","+tel;
 	
-		public
 	}
 }
 
